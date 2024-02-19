@@ -15,7 +15,7 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id');
+            $table->foreignId('employee_id')->nullable();
             $table->text('reason')->nullable();
             $table->string('status')->default('pending')->nullable();
             $table->foreignId('departure_id')->references('id')->on('destinations');
@@ -23,7 +23,8 @@ class CreateBookingsTable extends Migration
             $table->bigInteger('total_days');
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('initiated_by')->references('id')->on(config('admin.database.users_table'));
+            $table->unsignedInteger('initiated_by');
+            $table->foreign('initiated_by')->references('id')->on(config('admin.database.users_table'));
             $table->timestamps();
             $table->softDeletes();
         });

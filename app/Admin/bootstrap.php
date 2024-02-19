@@ -18,4 +18,27 @@
  *
  */
 
+use OpenAdmin\Admin\Admin;
+use OpenAdmin\Admin\Grid;
+use OpenAdmin\Admin\Grid\Displayers\Actions\Actions;
+
+//Admin::$favicon(asset{{'images/Logo Transparency.png'}});
+//$favicon = ;
+//Admin::$favicon('./images/Logo Transparency.png');
+
 OpenAdmin\Admin\Form::forget(['editor']);
+
+
+
+
+Grid::init(function (Grid $grid){
+
+//    $user = auth()->user();
+//    if(!$user->isAdministrator()){
+//       return $grid->disableActions();
+//    } else{
+//        $grid->disableActions(false);
+//    }
+
+
+});

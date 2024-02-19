@@ -32,10 +32,16 @@ class EmployeeController extends AdminController
     {
         $grid = new Grid(new Employee());
 
-        $grid->column('id', __('Id'));
-        $grid->column('user.name', __('name'));
-        $grid->column('first_name', __('First Name'));
-        $grid->column('middle_name', __('Middle Name'));
+        $grid->column('id')->sortable();
+//        $grid->column('user.name', __('name'));
+        $grid->column('user_id')->display(function($user) {
+            return User::find($user)->name;
+        });
+//        $grid->column('first_name', __('First Name'));
+//        $grid->column('middle_name', __('Middle Name'));
+        $grid->column('full_name')->display(function () {
+            return $this->first_name.' '.$this->last_name;
+        });
         $grid->column('last_name', __('Last Name'));
         $grid->column('gender.name', __('Gender'));
         $grid->column('id_type.name', __('ID Type'));
@@ -47,11 +53,16 @@ class EmployeeController extends AdminController
         $grid->column('employee_number', __('Employee Number'));
         $grid->column('department.name', __('Department'));
         $grid->column('designation.name', __('Designation'));
-        $grid->column('is_approver', __('Approver'));
+        $grid->column('user.name', __('Approver'));
         $grid->column('is_booking_agent', __('Booking Agent'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('deleted_at', __('Deleted at'));
+        $grid->filter(function ($filter) {
+
+            // Sets the range query for the created_at field
+            $filter->between('created_at', 'Created Time')->datetime();
+        });
 
         return $grid;
     }
@@ -81,7 +92,7 @@ class EmployeeController extends AdminController
         $show->field('employee_number', __('Employee Number'));
         $show->field('department.name', __('Department'));
         $show->field('designation.name', __('Designation'));
-        $show->field('is_approver', __('Approver'));
+        $show->field('user.name', __('Approver'));
         $show->field('is_booking_agent', __('Booking Agent'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -113,7 +124,7 @@ class EmployeeController extends AdminController
         $form->text('employee_number', __('Employee Number'));
         $form->select('department_id', __('Department'))->options(Department::all()->pluck('name','id'));
         $form->select('designation_id', __('Designation'))->options((Designation::all()->pluck('name', 'id')));
-        $form->select('is_approver', __('Approver'));
+        $form->select('approver_id', __('Approver'))->options(User::all()->pluck('name', 'id'));
         $form->select('is_booking_agent', __('Booking Agent'));
 
 

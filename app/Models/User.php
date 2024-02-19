@@ -19,6 +19,8 @@ class User extends Administrator
         return $this->hasOne(Employee::class);
     }
 
+
+
     public function routeNotificationFor($driver, $notification = null)
     {
         return $this->username;

@@ -15,7 +15,8 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on(config('admin.database.users_table'));
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on(config('admin.database.users_table'));
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
@@ -29,6 +30,8 @@ class CreateEmployeesTable extends Migration
             $table->string('employee_number')->nullable();
             $table->foreignId('department_id');
             $table->foreignId('designation_id');
+            $table->bigInteger('approver_id');
+
             $table->tinyInteger('is_approver')->nullable();
             $table->tinyInteger('is_booking_agent')->nullable();
             $table->timestamps();

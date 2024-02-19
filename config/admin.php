@@ -11,6 +11,7 @@ return [
     | login page.
     |
     */
+
     'name' => 'EBooking',
 
     /*
@@ -22,7 +23,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="http://logo-url" alt="Admin logo">',
+    'logo' => '<img src="http://logo-url" alt="E-Booking Admin Portal">',
 
     /*
     |--------------------------------------------------------------------------
@@ -260,7 +261,7 @@ return [
     | User default avatar
     |--------------------------------------------------------------------------
     |
-    | Set a default avatar for newly created users.
+    | Set a default avatar for newly created users.php.
     |
     */
     'default_avatar' => '/vendor/open-admin/open-admin/gfx/user.svg',

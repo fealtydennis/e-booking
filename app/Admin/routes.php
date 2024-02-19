@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin\Controllers\BookingAgentController;
 use App\Admin\Controllers\BookingController;
 use App\Admin\Controllers\CompanyController;
 use App\Admin\Controllers\DepartmentController;
@@ -10,9 +11,13 @@ use App\Admin\Controllers\EmployeeController;
 use App\Admin\Controllers\GenderController;
 use App\Admin\Controllers\HodController;
 use App\Admin\Controllers\IdTypeController;
+use App\Admin\Controllers\PaymentModeController;
+use App\Admin\Controllers\TravelModeController;
+use App\Admin\Controllers\TravelPurposeController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use OpenAdmin\Admin\Facades\Admin;
+use Carbon\Carbon;
 
 Admin::routes();
 
@@ -36,5 +41,8 @@ Route::group([
     $router->resource('destinations', DestinationController::class);
     $router->resource('employee-approvers', EmployeeApproverController::class);
     $router->resource('booking-agents', BookingAgentController::class);
+    $router->resource('travel-purposes', TravelPurposeController::class);
+    $router->resource('travel-modes', TravelModeController::class);
+    $router->resource('payment-modes', PaymentModeController::class);
 
 });

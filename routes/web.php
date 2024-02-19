@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
+//    $startDate = Carbon::parse('12-01-2024');
+//    $endDate = Carbon::parse('19-01-2024');
+
+//    $form->number('total_days')->display(function() use ($endDate, $startDate)
+//    {
+//        return $startDate->diffInDays($endDate);
+//    });
 });

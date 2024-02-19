@@ -2,21 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use \App\Models\Destination;
-use App\Models\TravelMode;
+use \App\Models\TravelMode;
 use OpenAdmin\Admin\Controllers\AdminController;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 
-class DestinationController extends AdminController
+class TravelModeController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Destination';
+    protected $title = 'TravelMode';
 
     /**
      * Make a grid builder.
@@ -25,11 +24,10 @@ class DestinationController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Destination());
+        $grid = new Grid(new TravelMode());
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('travel_mode.name', 'Travel Mode');
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -44,11 +42,10 @@ class DestinationController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Destination::findOrFail($id));
+        $show = new Show(TravelMode::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
-        $show->field('travel_mode.name', 'Travel Mode');
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -62,10 +59,9 @@ class DestinationController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Destination());
+        $form = new Form(new TravelMode());
 
         $form->text('name', __('Name'));
-        $form->select('travel_mode_id', 'Travel Mode')->options(TravelMode::all()->pluck('name', 'id'));
 
         return $form;
     }

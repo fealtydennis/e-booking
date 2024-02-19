@@ -13,7 +13,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to your application's "home" route.
      *
-     * Typically, users are redirected here after authentication.
+     * Typically, users.php are redirected here after authentication.
      *
      * @var string
      */
@@ -35,6 +35,15 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+        });
+        // User has permission `edit-post`、`create-post` and `delete-post` can access routes under group.
+        Route::group([
+            'middleware' => 'admin.permission:check,edit-post,create-post,delete-post',
+        ], function ($router) {
+
+            $router->resource('posts', PostController::class);
+
+
         });
     }
 }

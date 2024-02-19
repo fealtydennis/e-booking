@@ -15,8 +15,20 @@ class BookingAgent extends Model
 
     public function destination():belongsTo
     {
-        return $this->belongsTo(Destination::class);
+        return $this->belongsTo(Destination::class, 'departure_id');
+    }
+    public function employee():belongsTo
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
     }
 
+    public function booking():belongsTo
+    {
+        return $this->belongsTo(Booking::class, 'booking_id');
+    }
 
+    public function paymentMode():belongsTo
+    {
+        return $this->belongsTo(PaymentMode::class);
+    }
 }

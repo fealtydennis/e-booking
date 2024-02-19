@@ -26,7 +26,7 @@ class CreateBookingAgentsTable extends Migration
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
             $table->string('invoice_number')->nullable();
-            $table->string('Mode of Payment')->nullable();
+
             $table->timestamps();
         });
     }

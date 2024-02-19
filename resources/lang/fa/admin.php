@@ -101,7 +101,7 @@ return [
     'menu_titles'           => [
         'dashboard'          => 'داشبورد',
         'admin'              => 'ادمین',
-        'users'              => 'کاربران',
+        'users.php'              => 'کاربران',
         'roles'              => 'نقش ها',
         'permission'         => 'دسترسی ها',
         'menu'               => 'منو',

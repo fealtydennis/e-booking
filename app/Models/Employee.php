@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class Employee extends Model
 {
     use SoftDeletes;
+    use Notifiable;
 
     public function gender():belongsTo
     {
@@ -33,7 +34,8 @@ class Employee extends Model
     }
     public function user():belongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'approver_id');
     }
+
 
 }
